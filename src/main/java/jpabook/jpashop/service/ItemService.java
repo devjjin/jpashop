@@ -4,7 +4,7 @@ import jpabook.jpashop.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import repository.ItemRepository;
+import jpabook.jpashop.repository.ItemRepository;
 
 import java.util.List;
 
