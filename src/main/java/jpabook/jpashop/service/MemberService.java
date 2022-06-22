@@ -3,7 +3,6 @@ package jpabook.jpashop.service;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +13,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    @Autowired
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
-    //회원가입
-    public Long join(Member member){
-        validateDuplicateMember(member);    //중복회원 검증(비즈니스 로직)
+    /**
+     * 회원 가입
+     */
+    @Transactional
+    public Long join(Member member) {
+
+        validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getId();  // 영속성 컨텍스트에서 저장한 pk
     }
