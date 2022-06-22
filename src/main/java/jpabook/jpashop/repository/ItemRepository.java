@@ -2,7 +2,6 @@ package jpabook.jpashop.repository;
 
 import jpabook.jpashop.domain.item.Item;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,7 +18,7 @@ public class ItemRepository {
         if (item.getId() == null){
             em.persist(item);   // 신규등록
         }else{
-            em.merge(item); // update 있으면
+            Item merge = em.merge(item); // update 있으면
         }
     }
 
